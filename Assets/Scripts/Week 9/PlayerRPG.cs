@@ -14,6 +14,10 @@ public class PlayerRPG : MonoBehaviour
 
     public Image attackReadyImage;
 
+    public GameObject projectilePrefab;
+    public Transform projectileSpawnPosition;
+    public float projectileForce = 800;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +39,10 @@ public class PlayerRPG : MonoBehaviour
             }
         }
         
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Shoot();
+        }
 
         if(Input.GetMouseButtonDown(0))
         {
@@ -62,6 +70,13 @@ public class PlayerRPG : MonoBehaviour
         attackReadyImage.gameObject.SetActive(isAttackReady);
     }
 
+    public void Shoot()
+    {
+        GameObject go = Instantiate(projectilePrefab, projectileSpawnPosition.position, projectileSpawnPosition.rotation);
+        go.GetComponent<Rigidbody>().AddForce(go.transform.forward * projectileForce);
+        //enemy.TakeDamage(attackDamage);
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;
@@ -70,5 +85,10 @@ public class PlayerRPG : MonoBehaviour
         {
             Debug.Log("YOU DIED");
         }
+    }
+
+    public virtual void Heal(float heal)
+    {
+        Debug.Log("Player has recieved healing power up");
     }
 }
