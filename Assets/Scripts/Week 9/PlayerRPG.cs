@@ -17,6 +17,7 @@ public class PlayerRPG : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform projectileSpawnPosition;
     public float projectileForce = 800;
+    protected BaseEnemy enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -65,7 +66,7 @@ public class PlayerRPG : MonoBehaviour
 
     public void Attack(BaseEnemy enemy)
     {
-        enemy.TakeDamage(attackDamage);
+       // enemy.EnemyTakeDamage(attackDamage); //idk why this isnt working here but works for enemy
         isAttackReady = false;
         attackReadyImage.gameObject.SetActive(isAttackReady);
     }

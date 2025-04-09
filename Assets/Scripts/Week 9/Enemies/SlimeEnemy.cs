@@ -25,8 +25,8 @@ public class SlimeEnemy : BaseEnemy
         Debug.Log(this.gameObject.name + " deals " + attackDamage + " damage to you!");
     }
 
-    public override void TakeDamage(float damage)
+    public override void EnemyTakeDamage(int damageTaken)
     {
-        base.TakeDamage(damage);
+        base.EnemyTakeDamage(damageTaken);
     }
 }
